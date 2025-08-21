@@ -1,175 +1,170 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lacoste Massages – Intake & Contraindication Form</title>
-  <meta name="description" content="Complete your intake form before your appointment to save time at your session." />
-  <style>
-    :root { --bg:#fbfbfc; --text:#0f172a; --muted:#64748b; --brand:#0ea5e9; --brand-d:#0284c7; --card:#fff; --ring:rgba(14,165,233,.25); }
-    *{box-sizing:border-box}
-    body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
-    a{color:var(--brand-d);text-decoration:none}
-    .wrap{max-width:900px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-    h1{font-size:clamp(24px,4.5vw,36px);margin:0}
-    .lead{color:var(--muted)}
-    .note{background:#ecfeff;border:1px solid #a5f3fc;color:#0e7490;border-radius:12px;padding:10px;margin:14px 0;font-weight:600}
-    form{display:grid;gap:14px}
-    fieldset{border:1px solid #e5e7eb;border-radius:12px;padding:14px;background:#fff}
-    legend{font-weight:700;padding:0 6px}
-    label{display:block;margin:8px 0 6px}
-    input, textarea, select{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
-    textarea{min-height:90px}
-    .grid2{display:grid;grid-template-columns:1fr;gap:12px}
-    @media(min-width:760px){ .grid2{grid-template-columns:1fr 1fr} }
-    .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-    .small{font-size:13px;color:var(--muted)}
-    .btn{display:inline-block;background:var(--brand);color:#fff;padding:12px 16px;border-radius:12px;font-weight:600;border:0;cursor:pointer}
-    .btn:hover{background:var(--brand-d)}
-    footer{margin-top:18px;color:var(--muted);font-size:13px}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lacoste Massages – Intake & Contraindication Form</title>
+<meta name="description" content="Get ahead and don’t spend any of your appointment time filling out forms." />
+<style>
+  :root{--bg:#fbfbfc;--text:#0f172a;--muted:#64748b;--brand:#0ea5e9;--brand-d:#0284c7;--card:#fff;--ring:rgba(14,165,233,.25)}
+  *{box-sizing:border-box} body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
+  a{color:var(--brand-d);text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:24px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  h1{font-size:clamp(24px,4.5vw,36px);margin:0}
+  .lead{color:var(--muted)}
+  .note{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#ecfeff;border:1px solid #a5f3fc;color:#0e7490;border-radius:12px;padding:10px;margin:14px 0}
+  .btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;border:0;cursor:pointer}
+  .btn:hover{background:var(--brand-d)}
+  form{display:grid;gap:14px}
+  fieldset{border:1px solid #e5e7eb;border-radius:12px;padding:14px;background:#fff}
+  legend{font-weight:700;padding:0 6px}
+  label{display:block;margin:8px 0 6px}
+  input,textarea,select{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
+  textarea{min-height:90px}
+  .grid2{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+  .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .small{font-size:13px;color:var(--muted)}
+  footer{margin-top:18px;color:var(--muted);font-size:13px}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Intake & Contraindication Form</h1>
-      <a href="/" class="small">← Back to site</a>
-    </header>
-    <p class="lead"><strong>Get ahead</strong> and don’t spend any of your appointment time filling out forms.</p>
-    <div class="note">Returning customer? Please skip.</div>
+<div class="wrap">
+  <header>
+    <h1>Intake & Contraindication Form</h1>
+    <a href="/" class="small">← Back to homepage</a>
+  </header>
 
-    <!-- Formspree intake form -->
-    <form action="https://formspree.io/f/xovlgvno" method="POST">
-      <input type="hidden" name="_subject" value="New intake form — Lacoste Massages">
-
-      <!-- Personal Info -->
-      <fieldset>
-        <legend>Personal Information</legend>
-        <div class="grid2">
-          <div>
-            <label>Full name<input name="name" required></label>
-            <label>Phone (day)<input name="phone_day"></label>
-            <label>City / Postcode<input name="city_postcode"></label>
-            <label>Occupation<input name="occupation"></label>
-            <label>Email<input type="email" name="email"></label>
-          </div>
-          <div>
-            <label>Date of birth<input name="dob" type="date"></label>
-            <label>Phone (evening)<input name="phone_evening"></label>
-            <label>Employer<input name="employer"></label>
-            <label>Primary physician<input name="primary_physician"></label>
-            <label>Emergency contact (name & phone)<input name="emergency_contact"></label>
-          </div>
-        </div>
-        <label>How did you hear about us?<input name="referral"></label>
-      </fieldset>
-
-      <!-- Medical Information -->
-      <fieldset>
-        <legend>Medical Information</legend>
-        <div class="grid2">
-          <div>
-            <label>Are you taking any medications?
-              <select name="medications">
-                <option value="">Select…</option><option>Yes</option><option>No</option>
-              </select>
-            </label>
-            <label>If yes, please list name and use<textarea name="medications_list"></textarea></label>
-
-            <label>Are you currently pregnant?
-              <select name="pregnant"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-            </label>
-            <label>If yes, how far along?<input name="pregnancy_weeks" placeholder="weeks"></label>
-
-            <label>Do you suffer from chronic pain?
-              <select name="chronic_pain"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-            </label>
-            <label>If yes, please explain<textarea name="chronic_pain_details"></textarea></label>
-            <label>What makes it better?<input name="pain_better"></label>
-            <label>What makes it worse?<input name="pain_worse"></label>
-
-            <label>Have you had any orthopaedic injuries?
-              <select name="orthopaedic_injuries"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-            </label>
-            <label>If yes, please list<textarea name="orthopaedic_details"></textarea></label>
-          </div>
-
-          <div>
-            <label class="small">Please indicate any that apply</label>
-            <div class="checks">
-              <label><input type="checkbox" name="conditions" value="Cancer"> Cancer</label>
-              <label><input type="checkbox" name="conditions" value="Headaches/Migraines"> Headaches/Migraines</label>
-              <label><input type="checkbox" name="conditions" value="Arthritis"> Arthritis</label>
-              <label><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
-              <label><input type="checkbox" name="conditions" value="Joint replacement(s)"> Joint replacement(s)</label>
-              <label><input type="checkbox" name="conditions" value="High/Low blood pressure"> High/Low blood pressure</label>
-              <label><input type="checkbox" name="conditions" value="Neuropathy"> Neuropathy</label>
-              <label><input type="checkbox" name="conditions" value="Fibromyalgia"> Fibromyalgia</label>
-              <label><input type="checkbox" name="conditions" value="Stroke"> Stroke</label>
-              <label><input type="checkbox" name="conditions" value="Heart attack"> Heart attack</label>
-              <label><input type="checkbox" name="conditions" value="Kidney dysfunction"> Kidney dysfunction</label>
-              <label><input type="checkbox" name="conditions" value="Blood clots"> Blood clots</label>
-              <label><input type="checkbox" name="conditions" value="Numbness"> Numbness</label>
-              <label><input type="checkbox" name="conditions" value="Sprains/Strains"> Sprains/Strains</label>
-              <label><input type="checkbox" name="conditions" value="Other"> Other</label>
-            </div>
-            <label>Explain any conditions marked above<textarea name="conditions_notes"></textarea></label>
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- Massage Information -->
-      <fieldset>
-        <legend>Massage Information</legend>
-        <div class="grid2">
-          <div>
-            <label>Have you had a professional massage before?
-              <select name="had_massage"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-            </label>
-            <label>What type of massage are you seeking?
-              <select name="massage_type">
-                <option value="">Select…</option>
-                <option>Relaxation</option>
-                <option>Therapeutic/Deep Tissue</option>
-                <option>Sports</option>
-                <option>Other</option>
-              </select>
-            </label>
-            <label>What pressure do you prefer?
-              <select name="pressure"><option>Light</option><option>Medium</option><option>Deep</option></select>
-            </label>
-          </div>
-          <div>
-            <label>Allergies or sensitivities?<textarea name="allergies"></textarea></label>
-            <label>Areas you do not want massaged (feet/face/abdomen etc.)?
-              <select name="areas_exclude"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-            </label>
-            <label>If yes, please explain<textarea name="areas_exclude_details"></textarea></label>
-            <label>Goals for this session<textarea name="goals"></textarea></label>
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- Consent -->
-      <fieldset>
-        <legend>Consent</legend>
-        <label><input type="checkbox" name="consent" required>
-          I confirm the information provided is accurate to the best of my knowledge and I will inform my therapist of any changes.
-        </label>
-        <div class="grid2">
-          <label>Client signature (type your full name)<input name="client_signature" required></label>
-          <label>Date<input name="client_signature_date" type="date" required></label>
-        </div>
-      </fieldset>
-
-      <!-- Submit -->
-      <button class="btn" type="submit">Submit intake</button>
-      <div class="small">Your responses are sent securely to Lacoste Massages and used only for clinical care.</div>
-    </form>
-
-    <footer>© <span id="y"></span> Lacoste Massages</footer>
+  <p class="lead"><strong>Get ahead</strong> and don’t spend any of your appointment time filling out forms.</p>
+  <div class="note">
+    <span><strong>Returning customer?</strong> You can skip this form.</span>
+    <a class="btn" href="/">Skip & return to main page</a>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <!-- Formspree intake form -->
+  <form action="https://formspree.io/f/xovlgvno" method="POST">
+    <input type="hidden" name="_subject" value="New intake form — Lacoste Massages" />
+
+    <!-- Personal Information -->
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div class="grid2">
+        <div>
+          <label>Full name<input name="name" required /></label>
+          <label>Phone (day)<input name="phone_day" /></label>
+          <label>City / Postcode<input name="city_postcode" /></label>
+          <label>Occupation<input name="occupation" /></label>
+          <label>Email<input type="email" name="email" /></label>
+        </div>
+        <div>
+          <label>Date of birth<input name="dob" type="date" /></label>
+          <label>Phone (evening)<input name="phone_evening" /></label>
+          <label>Employer<input name="employer" /></label>
+          <label>Primary physician<input name="primary_physician" /></label>
+          <label>Emergency contact (name & phone)<input name="emergency_contact" /></label>
+        </div>
+      </div>
+      <label>How did you hear about us?<input name="referral" /></label>
+    </fieldset>
+
+    <!-- Medical Information -->
+    <fieldset>
+      <legend>Medical Information</legend>
+      <div class="grid2">
+        <div>
+          <label>Are you taking any medications?
+            <select name="medications"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+          </label>
+          <label>If yes, list name and use<textarea name="medications_list"></textarea></label>
+
+          <label>Are you currently pregnant?
+            <select name="pregnant"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+          </label>
+          <label>If yes, how far along?<input name="pregnancy_weeks" placeholder="weeks" /></label>
+
+          <label>Do you suffer from chronic pain?
+            <select name="chronic_pain"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+          </label>
+          <label>If yes, please explain<textarea name="chronic_pain_details"></textarea></label>
+          <label>What makes it better?<input name="pain_better" /></label>
+          <label>What makes it worse?<input name="pain_worse" /></label>
+
+          <label>Have you had any orthopaedic injuries?
+            <select name="orthopaedic_injuries"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+          </label>
+          <label>If yes, please list<textarea name="orthopaedic_details"></textarea></label>
+        </div>
+
+        <div>
+          <label class="small">Please indicate any that apply</label>
+          <div class="checks">
+            <label><input type="checkbox" name="conditions" value="Cancer"> Cancer</label>
+            <label><input type="checkbox" name="conditions" value="Headaches/Migraines"> Headaches/Migraines</label>
+            <label><input type="checkbox" name="conditions" value="Arthritis"> Arthritis</label>
+            <label><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
+            <label><input type="checkbox" name="conditions" value="Joint replacement(s)"> Joint replacement(s)</label>
+            <label><input type="checkbox" name="conditions" value="High/Low blood pressure"> High/Low blood pressure</label>
+            <label><input type="checkbox" name="conditions" value="Neuropathy"> Neuropathy</label>
+            <label><input type="checkbox" name="conditions" value="Fibromyalgia"> Fibromyalgia</label>
+            <label><input type="checkbox" name="conditions" value="Stroke"> Stroke</label>
+            <label><input type="checkbox" name="conditions" value="Heart attack"> Heart attack</label>
+            <label><input type="checkbox" name="conditions" value="Kidney dysfunction"> Kidney dysfunction</label>
+            <label><input type="checkbox" name="conditions" value="Blood clots"> Blood clots</label>
+            <label><input type="checkbox" name="conditions" value="Numbness"> Numbness</label>
+            <label><input type="checkbox" name="conditions" value="Sprains/Strains"> Sprains/Strains</label>
+            <label><input type="checkbox" name="conditions" value="Other"> Other</label>
+          </div>
+          <label>Explain any conditions marked above<textarea name="conditions_notes"></textarea></label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Massage Information -->
+    <fieldset>
+      <legend>Massage Information</legend>
+      <div class="grid2">
+        <div>
+          <label>Have you had a professional massage before?
+            <select name="had_massage"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+          </label>
+          <label>What type of massage are you seeking?
+            <select name="massage_type">
+              <option value="">Select…</option><option>Relaxation</option><option>Therapeutic/Deep Tissue</option><option>Sports</option><option>Other</option>
+            </select>
+          </label>
+          <label>What pressure do you prefer?
+            <select name="pressure"><option>Light</option><option>Medium</option><option>Deep</option></select>
+          </label>
+        </div>
+        <div>
+          <label>Allergies or sensitivities?<textarea name="allergies"></textarea></label>
+          <label>Areas you do not want massaged (feet/face/abdomen etc.)?
+            <select name="areas_exclude"><option value="">Select…</option><option>Yes</option><option>No</option></select>
+          </label>
+          <label>If yes, please explain<textarea name="areas_exclude_details"></textarea></label>
+          <label>Goals for this session<textarea name="goals"></textarea></label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Consent -->
+    <fieldset>
+      <legend>Consent</legend>
+      <label><input type="checkbox" name="consent" required>
+        I confirm the information provided is accurate to the best of my knowledge and I will inform my therapist of any changes.
+      </label>
+      <div class="grid2">
+        <label>Client signature (type your full name)<input name="client_signature" required /></label>
+        <label>Date<input name="client_signature_date" type="date" required /></label>
+      </div>
+    </fieldset>
+
+    <button class="btn" type="submit">Submit intake</button>
+    <div class="small">Your responses are sent securely to Lacoste Massages and used only for clinical care.</div>
+  </form>
+
+  <footer>© <span id="y"></span> Lacoste Massages</footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
