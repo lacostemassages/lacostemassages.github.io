@@ -123,11 +123,13 @@
     <section id="enquiry" class="section two-col">
       <div class="card">
         <h2>Enquiry Form</h2>
-        <p class="muted">Fill in your details and we’ll reply with the next available slot and a link to confirm.</p>
+        <p class="muted">Let us know what service you require, a desired time/times for a visit and any other pertinent information. We will reply with availablity and a link to confirm.</p>
 
-        <!-- Formspree-powered form -->
+        <!-- Formspree (enquiry) -->
         <form action="https://formspree.io/f/xqalralg" method="POST">
           <input type="hidden" name="_subject" value="New enquiry — Lacoste Massages">
+          <!-- Redirect client to the intake form after submitting -->
+          <input type="hidden" name="_redirect" value="/intake.html">
 
           <label>Name<input required name="name" placeholder="Your name"></label>
           <label>Email<input required type="email" name="email" placeholder="you@example.com"></label>
@@ -137,7 +139,6 @@
             <textarea name="notes" rows="4" placeholder="e.g., runner with calf tightness; desk-neck pain; post-event recovery"></textarea>
           </label>
 
-          <!-- Simple honeypot -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
           <button class="btn" type="submit">Send enquiry</button>
@@ -152,10 +153,7 @@
         <p><strong>Phone:</strong> TBC</p>
         <p><strong>Email:</strong> <a href="mailto:lacostemassages@gmail.com">lacostemassages@gmail.com</a></p>
         <p><strong>Address:</strong><br>
-          Forge Cottage,<br>
-          Deopham Road,<br>
-          Morley St Botolph,<br>
-          Norfolk NR18 9AA
+          Forge Cottage,<br>Deopham Road,<br>Morley St Botolph,<br>Norfolk NR18 9AA
         </p>
       </div>
     </section>
@@ -165,9 +163,6 @@
       <div class="muted">Mobile service • Evenings & weekends • Fully insured</div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
