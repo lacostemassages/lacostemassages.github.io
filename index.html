@@ -5,10 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lacoste Massages | Clinical Sports & Remedial Massage – Wymondham–Norwich</title>
 <meta name="description" content="Clinical sports & remedial massage across Wymondham–Norwich. Mobile appointments, evidence-based care, flexible hours." />
+
+<!-- Leaflet (map) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 <style>
   :root{
     --bg-top:#ffffff;
-    --bg-btm:#c2dafb;          /* slightly darker blue for page fade */
+    --bg-btm:#c2dafb;          /* page fade (darker blue bottom) */
     --text:#0f172a; --muted:#64748b;
     --brand:#0ea5e9; --brand-d:#0284c7;
     --card:#ffffff; --ring:rgba(14,165,233,.25);
@@ -105,9 +110,9 @@
   .profile img{width:100%;max-width:280px;height:auto;border-radius:14px;object-fit:cover}
   .caption{font-size:14px;color:#475569;margin-top:6px}
 
-  /* ===== Service area card tweak ===== */
-  .range{display:flex;align-items:center;gap:12px;margin-top:10px}
-  .dot{width:10px;height:10px;border-radius:999px;background:#38bdf8;box-shadow:0 0 0 8px rgba(56,189,248,.15)}
+  /* ===== Service area map ===== */
+  #radiusMap{height:320px;border-radius:12px;margin-top:10px}
+  .map-note{font-size:13px;color:#475569;margin-top:8px}
 
   /* ===== FULL-WIDTH CONTACT BANNER ===== */
   .contact-banner{
@@ -178,11 +183,12 @@
       <div class="card">
         <h2>Service area</h2>
         <p class="muted">Core mobile coverage within <strong>≈10 miles of NR18 9AA</strong>. Out-of-area bookings considered by request.</p>
-        <div class="range">
-          <span class="dot" aria-hidden="true"></span>
-          <span class="muted">Home base: Forge Cottage, Deopham Road, Morley St Botolph.</span>
-        </div>
+
+        <!-- Radius map -->
+        <div id="radiusMap" role="img" aria-label="Map showing a 10-mile service radius around NR18 9AA"></div>
+        <div class="map-note">Map circle shown for guidance. Exact travel feasibility is confirmed on enquiry.</div>
       </div>
+
       <div class="card">
         <h2>Pricing</h2>
         <ul>
@@ -238,7 +244,36 @@
   </footer>
 
 <script>
+  // Year
   document.getElementById('y').textContent = new Date().getFullYear();
+
+  // ===== Radius Map (Leaflet) =====
+  // Approximate centre for NR18 9AA (Morley St Botolph). Adjust if you prefer.
+  const CENTER_LAT = 52.5658;
+  const CENTER_LNG = 1.0638;
+  const RADIUS_METRES = 16093; // 10 miles
+
+  const map = L.map('radiusMap', { scrollWheelZoom:false }).setView([CENTER_LAT, CENTER_LNG], 11);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  L.circle([CENTER_LAT, CENTER_LNG], {
+    radius: RADIUS_METRES,
+    color: '#0284c7',
+    weight: 2,
+    fill: true,
+    fillOpacity: 0.08
+  }).addTo(map);
+
+  L.marker([CENTER_LAT, CENTER_LNG])
+    .addTo(map)
+    .bindPopup('NR18 9AA – Approx. centre');
+
+  // Ensure map renders properly if inside a flex layout
+  setTimeout(()=> { map.invalidateSize(); }, 250);
 </script>
 </body>
 </html>
