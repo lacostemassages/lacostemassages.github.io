@@ -35,10 +35,10 @@
       linear-gradient(180deg, #ffffff 10%, #f8fafc 100%); text-align:center}
     .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center}
     form{display:grid;gap:10px}
-    input,textarea,select{width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#fff;outline:none}
-    input:focus,textarea:focus,select:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
+    input,textarea{width:100%;padding:12px;border:1px solid #e5e7eb;border-radius:12px;background:#fff;outline:none}
+    input:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
     footer{padding:24px 0 44px;color:var(--muted);font-size:14px;text-align:center}
-    .success{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0;border-radius:12px;padding:12px}
+    .offer{background:#ecfeff;border:1px solid #a5f3fc;color:#0e7490;border-radius:12px;padding:10px;margin-top:10px;font-weight:600}
   </style>
 </head>
 <body>
@@ -54,18 +54,17 @@
       <nav>
         <a href="#services">Services</a>
         <a href="#area">Service Area</a>
-        <a href="#enquire">Enquire</a>
-        <a href="#intake">Intake</a>
+        <a href="#enquiry">Enquiry Form</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <section class="hero" id="top">
+    <section class="hero">
       <span class="badge">Wymondham → Norwich (mobile)</span>
       <h1>Evidence-based massage for pain relief, recovery, and performance.</h1>
       <p class="muted">Level 5 clinical sports & remedial massage delivered to your home or workplace. Targeted treatment plans for runners, gym-goers, desk workers, and manual professionals.</p>
       <div class="cta">
-        <a class="btn" href="#enquire">Check availability</a>
-        <a class="btn ghost" href="#intake">Start intake</a>
+        <a class="btn" href="#enquiry">Enquiry Form</a>
       </div>
     </section>
 
@@ -108,53 +107,56 @@
         </div>
       </div>
       <div class="card">
-        <h2>Pricing (guide)</h2>
+        <h2>Pricing</h2>
         <ul>
-          <li>45 minutes – £xx</li>
-          <li>60 minutes – £xx</li>
+          <li>60 minutes – <strong>£50</strong></li>
+          <li>90 minutes – <strong>£70</strong></li>
           <li>Block bookings & club rates available</li>
         </ul>
-        <p class="muted" style="margin-top:8px;">Travel included within core area. Please enquire for outer-zone bookings.</p>
+        <div class="offer">First-time clients: 90-minute massage for the price of a 60-minute.</div>
+        <p class="muted" style="margin-top:10px;">
+          Travel charges may apply for locations outside the core service area, applied at the therapist’s discretion.
+        </p>
       </div>
     </section>
 
-    <section id="enquire" class="section two-col">
+    <section id="enquiry" class="section two-col">
       <div class="card">
-        <h2>Check availability</h2>
-        <p class="muted">Tell us a little about your needs. We’ll reply with the next available slot and a link to confirm.</p>
+        <h2>Enquiry Form</h2>
+        <p class="muted">Fill in your details and we’ll reply with the next available slot and a link to confirm.</p>
 
-        <!-- ✅ Formspree-powered form (no email client needed) -->
-        <form id="leadForm" action="https://formspree.io/f/xqalralg" method="POST">
-          <!-- Formspree will email submissions to the address in your Formspree project -->
-          <input type="hidden" name="_subject" value="New availability enquiry — Lacoste Massages">
-          <!-- Optional thank-you redirect (uncomment and set a URL if you make a /thanks page) -->
-          <!-- <input type="hidden" name="_redirect" value="https://lacostemassages.github.io/thanks.html"> -->
+        <!-- Formspree-powered form -->
+        <form action="https://formspree.io/f/xqalralg" method="POST">
+          <input type="hidden" name="_subject" value="New enquiry — Lacoste Massages">
 
           <label>Name<input required name="name" placeholder="Your name"></label>
           <label>Email<input required type="email" name="email" placeholder="you@example.com"></label>
           <label>Phone (optional)<input name="phone" placeholder="e.g., 07xxx xxxxxx"></label>
-          <label>Postcode (for travel)<input required name="postcode" placeholder="e.g., NR18"></label>
+          <label>Postcode<input required name="postcode" placeholder="e.g., NR18"></label>
           <label>What do you need help with?
             <textarea name="notes" rows="4" placeholder="e.g., runner with calf tightness; desk-neck pain; post-event recovery"></textarea>
           </label>
 
-          <!-- Simple honeypot to reduce spam -->
+          <!-- Simple honeypot -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-          <button class="btn" type="submit">Submit enquiry</button>
+          <button class="btn" type="submit">Send enquiry</button>
           <div class="muted" style="font-size:12px;">We only use your details to respond to this enquiry.</div>
         </form>
-
-        <div id="successMsg" class="success" style="display:none;margin-top:12px;">
-          Thanks! Your enquiry was sent. We’ll reply shortly.
-        </div>
       </div>
+    </section>
 
-      <div class="card" id="intake">
-        <h2>Already booked?</h2>
-        <p class="muted">Speed up your first visit by completing the intake & contraindication form in advance.</p>
-        <a class="btn ghost" href="forms/Lacoste_Massages_Intake_Contraindication_Form.pdf" target="_blank" rel="noopener">Open intake form (PDF)</a>
-        <p class="muted" style="margin-top:8px; font-size:13px;">Mobile-friendly PDF. Takes ~3–5 minutes.</p>
+    <section id="contact" class="section">
+      <div class="card">
+        <h2>Contact</h2>
+        <p><strong>Phone:</strong> TBC</p>
+        <p><strong>Email:</strong> <a href="mailto:lacostemassages@gmail.com">lacostemassages@gmail.com</a></p>
+        <p><strong>Address:</strong><br>
+          Forge Cottage,<br>
+          Deopham Road,<br>
+          Morley St Botolph,<br>
+          Norfolk NR18 9AA
+        </p>
       </div>
     </section>
 
@@ -165,14 +167,7 @@
   </div>
 
   <script>
-    // Cosmetic success message without blocking Formspree flow (progressive enhancement)
     document.getElementById('y').textContent = new Date().getFullYear();
-    const form = document.getElementById('leadForm');
-    const msg  = document.getElementById('successMsg');
-    form.addEventListener('submit', () => {
-      // Briefly show success; Formspree will also show its own confirmation page
-      setTimeout(() => { if (msg) msg.style.display = 'block'; }, 400);
-    });
   </script>
 </body>
 </html>
