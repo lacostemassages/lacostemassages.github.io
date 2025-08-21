@@ -7,23 +7,27 @@
 <meta name="description" content="Get ahead and don’t spend any of your appointment time filling out forms." />
 <style>
   :root{--bg:#fbfbfc;--text:#0f172a;--muted:#64748b;--brand:#0ea5e9;--brand-d:#0284c7;--card:#fff;--ring:rgba(14,165,233,.25)}
-  *{box-sizing:border-box} body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg)}
   a{color:var(--brand-d);text-decoration:none}
   .wrap{max-width:900px;margin:0 auto;padding:24px}
   header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
   h1{font-size:clamp(24px,4.5vw,36px);margin:0}
   .lead{color:var(--muted)}
-  .note{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#ecfeff;border:1px solid #a5f3fc;color:#0e7490;border-radius:12px;padding:10px;margin:14px 0}
+  .note{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#ecfeff;border:1px solid #a5f3fc;color:#0e7490;border-radius:12px;padding:12px;margin:16px 0}
   .btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;border:0;cursor:pointer}
   .btn:hover{background:var(--brand-d)}
-  form{display:grid;gap:14px}
-  fieldset{border:1px solid #e5e7eb;border-radius:12px;padding:14px;background:#fff}
+  form{display:grid;gap:18px}
+  fieldset{border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:#fff}
   legend{font-weight:700;padding:0 6px}
-  label{display:block;margin:8px 0 6px}
+  .grid2{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
+  .row{display:block;margin:0}               /* each question wrapper */
+  .row + .row{margin-top:12px}               /* even spacing between questions */
+  label{display:block;font-weight:600;margin:0 0 6px}
   input,textarea,select{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
   textarea{min-height:90px}
-  .grid2{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:760px){.grid2{grid-template-columns:1fr 1fr}}
-  .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .small{font-size:13px;color:var(--muted)}
   footer{margin-top:18px;color:var(--muted);font-size:13px}
 </style>
@@ -50,21 +54,54 @@
       <legend>Personal Information</legend>
       <div class="grid2">
         <div>
-          <label>Full name<input name="name" required /></label>
-          <label>Phone (day)<input name="phone_day" /></label>
-          <label>City / Postcode<input name="city_postcode" /></label>
-          <label>Occupation<input name="occupation" /></label>
-          <label>Email<input type="email" name="email" /></label>
+          <div class="row">
+            <label for="name">Full name</label>
+            <input id="name" name="name" required />
+          </div>
+          <div class="row">
+            <label for="phone_day">Phone (day)</label>
+            <input id="phone_day" name="phone_day" />
+          </div>
+          <div class="row">
+            <label for="city_postcode">City / Postcode</label>
+            <input id="city_postcode" name="city_postcode" />
+          </div>
+          <div class="row">
+            <label for="occupation">Occupation</label>
+            <input id="occupation" name="occupation" />
+          </div>
+          <div class="row">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" />
+          </div>
         </div>
         <div>
-          <label>Date of birth<input name="dob" type="date" /></label>
-          <label>Phone (evening)<input name="phone_evening" /></label>
-          <label>Employer<input name="employer" /></label>
-          <label>Primary physician<input name="primary_physician" /></label>
-          <label>Emergency contact (name & phone)<input name="emergency_contact" /></label>
+          <div class="row">
+            <label for="dob">Date of birth (DD/MM/YYYY)</label>
+            <input id="dob" name="dob" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" />
+          </div>
+          <div class="row">
+            <label for="phone_evening">Phone (evening)</label>
+            <input id="phone_evening" name="phone_evening" />
+          </div>
+          <div class="row">
+            <label for="employer">Employer</label>
+            <input id="employer" name="employer" />
+          </div>
+          <div class="row">
+            <label for="primary_physician">Primary physician</label>
+            <input id="primary_physician" name="primary_physician" />
+          </div>
+          <div class="row">
+            <label for="emergency_contact">Emergency contact (name & phone)</label>
+            <input id="emergency_contact" name="emergency_contact" />
+          </div>
         </div>
       </div>
-      <label>How did you hear about us?<input name="referral" /></label>
+      <div class="row">
+        <label for="referral">How did you hear about us?</label>
+        <input id="referral" name="referral" />
+      </div>
     </fieldset>
 
     <!-- Medical Information -->
@@ -72,49 +109,84 @@
       <legend>Medical Information</legend>
       <div class="grid2">
         <div>
-          <label>Are you taking any medications?
-            <select name="medications"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-          </label>
-          <label>If yes, list name and use<textarea name="medications_list"></textarea></label>
+          <div class="row">
+            <label for="medications">Are you taking any medications?</label>
+            <select id="medications" name="medications">
+              <option value="">Select…</option><option>Yes</option><option>No</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="medications_list">If yes, please list name and use</label>
+            <textarea id="medications_list" name="medications_list"></textarea>
+          </div>
 
-          <label>Are you currently pregnant?
-            <select name="pregnant"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-          </label>
-          <label>If yes, how far along?<input name="pregnancy_weeks" placeholder="weeks" /></label>
+          <div class="row">
+            <label for="pregnant">Are you currently pregnant?</label>
+            <select id="pregnant" name="pregnant">
+              <option value="">Select…</option><option>Yes</option><option>No</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="pregnancy_weeks">If yes, how far along? (weeks)</label>
+            <input id="pregnancy_weeks" name="pregnancy_weeks" placeholder="e.g., 20" />
+          </div>
 
-          <label>Do you suffer from chronic pain?
-            <select name="chronic_pain"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-          </label>
-          <label>If yes, please explain<textarea name="chronic_pain_details"></textarea></label>
-          <label>What makes it better?<input name="pain_better" /></label>
-          <label>What makes it worse?<input name="pain_worse" /></label>
+          <div class="row">
+            <label for="chronic_pain">Do you suffer from chronic pain?</label>
+            <select id="chronic_pain" name="chronic_pain">
+              <option value="">Select…</option><option>Yes</option><option>No</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="chronic_pain_details">If yes, please explain</label>
+            <textarea id="chronic_pain_details" name="chronic_pain_details"></textarea>
+          </div>
+          <div class="row">
+            <label for="pain_better">What makes it better?</label>
+            <input id="pain_better" name="pain_better" />
+          </div>
+          <div class="row">
+            <label for="pain_worse">What makes it worse?</label>
+            <input id="pain_worse" name="pain_worse" />
+          </div>
 
-          <label>Have you had any orthopaedic injuries?
-            <select name="orthopaedic_injuries"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-          </label>
-          <label>If yes, please list<textarea name="orthopaedic_details"></textarea></label>
+          <div class="row">
+            <label for="orthopaedic_injuries">Have you had any orthopaedic injuries?</label>
+            <select id="orthopaedic_injuries" name="orthopaedic_injuries">
+              <option value="">Select…</option><option>Yes</option><option>No</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="orthopaedic_details">If yes, please list</label>
+            <textarea id="orthopaedic_details" name="orthopaedic_details"></textarea>
+          </div>
         </div>
 
         <div>
-          <label class="small">Please indicate any that apply</label>
-          <div class="checks">
-            <label><input type="checkbox" name="conditions" value="Cancer"> Cancer</label>
-            <label><input type="checkbox" name="conditions" value="Headaches/Migraines"> Headaches/Migraines</label>
-            <label><input type="checkbox" name="conditions" value="Arthritis"> Arthritis</label>
-            <label><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
-            <label><input type="checkbox" name="conditions" value="Joint replacement(s)"> Joint replacement(s)</label>
-            <label><input type="checkbox" name="conditions" value="High/Low blood pressure"> High/Low blood pressure</label>
-            <label><input type="checkbox" name="conditions" value="Neuropathy"> Neuropathy</label>
-            <label><input type="checkbox" name="conditions" value="Fibromyalgia"> Fibromyalgia</label>
-            <label><input type="checkbox" name="conditions" value="Stroke"> Stroke</label>
-            <label><input type="checkbox" name="conditions" value="Heart attack"> Heart attack</label>
-            <label><input type="checkbox" name="conditions" value="Kidney dysfunction"> Kidney dysfunction</label>
-            <label><input type="checkbox" name="conditions" value="Blood clots"> Blood clots</label>
-            <label><input type="checkbox" name="conditions" value="Numbness"> Numbness</label>
-            <label><input type="checkbox" name="conditions" value="Sprains/Strains"> Sprains/Strains</label>
-            <label><input type="checkbox" name="conditions" value="Other"> Other</label>
+          <div class="row">
+            <label class="small">Please indicate any that apply</label>
+            <div class="checks">
+              <label><input type="checkbox" name="conditions" value="Cancer"> Cancer</label>
+              <label><input type="checkbox" name="conditions" value="Headaches/Migraines"> Headaches/Migraines</label>
+              <label><input type="checkbox" name="conditions" value="Arthritis"> Arthritis</label>
+              <label><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
+              <label><input type="checkbox" name="conditions" value="Joint replacement(s)"> Joint replacement(s)</label>
+              <label><input type="checkbox" name="conditions" value="High/Low blood pressure"> High/Low blood pressure</label>
+              <label><input type="checkbox" name="conditions" value="Neuropathy"> Neuropathy</label>
+              <label><input type="checkbox" name="conditions" value="Fibromyalgia"> Fibromyalgia</label>
+              <label><input type="checkbox" name="conditions" value="Stroke"> Stroke</label>
+              <label><input type="checkbox" name="conditions" value="Heart attack"> Heart attack</label>
+              <label><input type="checkbox" name="conditions" value="Kidney dysfunction"> Kidney dysfunction</label>
+              <label><input type="checkbox" name="conditions" value="Blood clots"> Blood clots</label>
+              <label><input type="checkbox" name="conditions" value="Numbness"> Numbness</label>
+              <label><input type="checkbox" name="conditions" value="Sprains/Strains"> Sprains/Strains</label>
+              <label><input type="checkbox" name="conditions" value="Other"> Other</label>
+            </div>
           </div>
-          <label>Explain any conditions marked above<textarea name="conditions_notes"></textarea></label>
+          <div class="row">
+            <label for="conditions_notes">Explain any conditions marked above</label>
+            <textarea id="conditions_notes" name="conditions_notes"></textarea>
+          </div>
         </div>
       </div>
     </fieldset>
@@ -124,25 +196,48 @@
       <legend>Massage Information</legend>
       <div class="grid2">
         <div>
-          <label>Have you had a professional massage before?
-            <select name="had_massage"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-          </label>
-          <label>What type of massage are you seeking?
-            <select name="massage_type">
-              <option value="">Select…</option><option>Relaxation</option><option>Therapeutic/Deep Tissue</option><option>Sports</option><option>Other</option>
+          <div class="row">
+            <label for="had_massage">Have you had a professional massage before?</label>
+            <select id="had_massage" name="had_massage">
+              <option value="">Select…</option><option>Yes</option><option>No</option>
             </select>
-          </label>
-          <label>What pressure do you prefer?
-            <select name="pressure"><option>Light</option><option>Medium</option><option>Deep</option></select>
-          </label>
+          </div>
+          <div class="row">
+            <label for="massage_type">What type of massage are you seeking?</label>
+            <select id="massage_type" name="massage_type">
+              <option value="">Select…</option>
+              <option>Relaxation</option>
+              <option>Therapeutic/Deep Tissue</option>
+              <option>Sports</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="pressure">What pressure do you prefer?</label>
+            <select id="pressure" name="pressure">
+              <option>Light</option><option>Medium</option><option>Deep</option>
+            </select>
+          </div>
         </div>
         <div>
-          <label>Allergies or sensitivities?<textarea name="allergies"></textarea></label>
-          <label>Areas you do not want massaged (feet/face/abdomen etc.)?
-            <select name="areas_exclude"><option value="">Select…</option><option>Yes</option><option>No</option></select>
-          </label>
-          <label>If yes, please explain<textarea name="areas_exclude_details"></textarea></label>
-          <label>Goals for this session<textarea name="goals"></textarea></label>
+          <div class="row">
+            <label for="allergies">Allergies or sensitivities?</label>
+            <textarea id="allergies" name="allergies"></textarea>
+          </div>
+          <div class="row">
+            <label for="areas_exclude">Areas you do not want massaged (feet/face/abdomen etc.)?</label>
+            <select id="areas_exclude" name="areas_exclude">
+              <option value="">Select…</option><option>Yes</option><option>No</option>
+            </select>
+          </div>
+          <div class="row">
+            <label for="areas_exclude_details">If yes, please explain</label>
+            <textarea id="areas_exclude_details" name="areas_exclude_details"></textarea>
+          </div>
+          <div class="row">
+            <label for="goals">Goals for this session</label>
+            <textarea id="goals" name="goals"></textarea>
+          </div>
         </div>
       </div>
     </fieldset>
@@ -150,12 +245,27 @@
     <!-- Consent -->
     <fieldset>
       <legend>Consent</legend>
-      <label><input type="checkbox" name="consent" required>
-        I confirm the information provided is accurate to the best of my knowledge and I will inform my therapist of any changes.
-      </label>
+      <div class="row">
+        <span class="small" style="display:block;margin-bottom:8px">
+          I confirm the information provided is accurate to the best of my knowledge and I will inform my therapist of any changes.
+        </span>
+        <!-- ✅ Checkbox placed after the sentence -->
+        <label style="font-weight:500">
+          <input type="checkbox" name="consent" required>
+          I agree
+        </label>
+      </div>
+
       <div class="grid2">
-        <label>Client signature (type your full name)<input name="client_signature" required /></label>
-        <label>Date<input name="client_signature_date" type="date" required /></label>
+        <div class="row">
+          <label for="client_signature">Client signature (type your full name)</label>
+          <input id="client_signature" name="client_signature" required />
+        </div>
+        <div class="row">
+          <label for="client_signature_date">Date (DD/MM/YYYY)</label>
+          <input id="client_signature_date" name="client_signature_date"
+                 placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" required />
+        </div>
       </div>
     </fieldset>
 
