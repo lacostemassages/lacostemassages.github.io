@@ -13,12 +13,12 @@
 <style>
   :root{
     --bg-top:#ffffff;
-    --bg-btm:#c2dafb;
+    --bg-btm:#c2dafb;           /* page fade (darker blue bottom) */
     --text:#0f172a; --muted:#64748b;
     --brand:#0ea5e9; --brand-d:#0284c7;
     --card:#ffffff; --ring:rgba(14,165,233,.25);
     --ink-invert:#ffffff; --ink-dim:#cbd5e1;
-    --bar:#0b1220;
+    --bar:#0b1220;              /* header & footer */
   }
 
   html, body { height: 100%; }
@@ -68,8 +68,8 @@
         box-shadow:0 6px 18px rgba(2,8,23,.04); overflow:hidden;}
   .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
 
-  .two-col{display:grid;grid-template-columns:1fr;gap:18px}
-  @media (min-width:800px){ .two-col{grid-template-columns:1.2fr .8fr} }
+  .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+  @media (max-width:800px){ .two-col{grid-template-columns:1fr} }
 
   .kpi{display:flex;gap:14px;align-items:flex-start}
   .ico{width:36px;height:36px;border-radius:10px;background:#eff6ff;color:#1d4ed8;display:grid;place-items:center;font-weight:700}
@@ -99,7 +99,7 @@
   form{display:grid;gap:12px; max-width: 680px;}
   input,textarea{
     width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:12px; background:#fff;
-    box-sizing:border-box; font-size:16px; /* stop iOS zoom */
+    box-sizing:border-box; font-size:16px;
   }
   input:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
 
@@ -126,27 +126,26 @@
   .site-footer{ width:100%; background:var(--bar); color:var(--ink-dim); }
   .footer-inner{ max-width:1000px; margin:0 auto; padding:18px 24px; text-align:center; font-size:14px; }
 
-  /* ===== Mobile polish (without changing desktop) ===== */
-  @media (max-width:799px){
-    .wrap{padding:14px}
-    .header-inner{padding:12px 14px; flex-direction:column; align-items:flex-start; gap:8px}
-    nav{gap:14px; flex-wrap:wrap; justify-content:flex-start}
-    .brand{gap:10px}
-    .card{padding:16px}
-    .two-col{gap:14px}
-    .hero{padding:28px 14px 14px}
-    form{max-width:100%}
-    #radiusMap{height:280px}
-    .profile img{max-width:220px}
-    .contact-banner{gap:14px; padding:14px}
-  }
-
-  /* Extra-small devices */
-  @media (max-width:420px){
-    nav{gap:12px}
-    h1{font-size:28px}
-    .card{padding:14px}
-    .btn{padding:12px 14px}
+  /* === PHONE-FIRST OVERRIDES === */
+  @media (max-width: 820px) {
+    .wrap { padding: 12px; }
+    .grid, .two-col { grid-template-columns: 1fr !important; gap: 12px; }
+    .section { padding: 16px 0; }
+    .card { padding: 14px; border-radius: 14px; }
+    .hero { padding: 20px 14px 12px; border-radius: 14px; }
+    h1 { font-size: 26px; line-height: 1.2; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 16px; }
+    form { max-width: 100% !important; gap: 10px; }
+    input, textarea { font-size: 16px; padding: 12px; }
+    .btn, button { width: 100%; padding: 12px 14px; }
+    .header-inner { padding: 10px 12px; flex-direction: column; align-items: stretch; gap: 8px; }
+    nav { gap: 10px; justify-content: space-between; flex-wrap: wrap; }
+    nav a { flex: 1 1 auto; text-align: center; padding: 8px 6px; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; }
+    .profile img { max-width: 100%; }
+    #radiusMap { height: 260px !important; }
+    .contact-banner { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 12px; text-align: center; }
+    .contact-banner div { font-size: 14px; }
   }
 </style>
 </head>
@@ -172,7 +171,7 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <div class="wrap">
     <section class="hero">
       <span class="badge">Wymondham → Norwich (mobile)</span>
@@ -195,7 +194,6 @@
         <h2>Service area</h2>
         <p class="muted">Core mobile coverage within <strong>≈10 miles of NR18 9AA</strong>. <em>Bookings outside the radius may incur a small travel fee.</em></p>
 
-        <!-- Radius map -->
         <div id="radiusMap" role="img" aria-label="Map showing a 10-mile service radius around NR18 9AA"></div>
         <div class="map-note">Map circle shown for guidance. Exact travel feasibility is confirmed on enquiry.</div>
       </div>
@@ -217,7 +215,6 @@
         <h2>Enquiry Form</h2>
         <p class="muted">Send a quick enquiry. You’ll receive custom availability by email and can then complete the intake via the menu above.</p>
 
-        <!-- Formspree (enquiry) -->
         <form action="https://formspree.io/f/xqalralg" method="POST">
           <input type="hidden" name="_subject" value="New enquiry — Lacoste Massages" />
           <label>Name<input required name="name" placeholder="Your name" /></label>
@@ -230,13 +227,12 @@
         </form>
       </div>
 
-      <!-- Profile -->
       <div class="card profile">
         <img src="profile.jpg" alt="Portrait of Matthew Lacoste" />
         <div class="caption">Matthew Lacoste</div>
       </div>
     </section>
-  </div><!-- /.wrap -->
+  </div>
 
   <!-- CONTACT BANNER -->
   <section id="contact" class="contact-banner">
@@ -255,11 +251,9 @@
   </footer>
 
 <script>
-  // Year
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // ===== Radius Map (Leaflet) =====
-  // Approximate centre for NR18 9AA (Morley St Botolph). Adjust if you prefer.
+  // Map centre for NR18 9AA (approx.)
   const CENTER_LAT = 52.5658;
   const CENTER_LNG = 1.0638;
   const RADIUS_METRES = 16093; // 10 miles
@@ -271,21 +265,11 @@
   }).addTo(map);
 
   const circle = L.circle([CENTER_LAT, CENTER_LNG], {
-    radius: RADIUS_METRES,
-    color: '#0284c7',
-    weight: 2,
-    fill: true,
-    fillOpacity: 0.08
+    radius: RADIUS_METRES, color: '#0284c7', weight: 2, fill: true, fillOpacity: 0.08
   }).addTo(map);
 
-  L.marker([CENTER_LAT, CENTER_LNG])
-    .addTo(map)
-    .bindPopup('NR18 9AA – Approx. centre');
-
-  // Fit the map to show the entire circle (with a little padding)
+  L.marker([CENTER_LAT, CENTER_LNG]).addTo(map).bindPopup('NR18 9AA – Approx. centre');
   map.fitBounds(circle.getBounds(), { padding: [30, 30] });
-
-  // Ensure map renders properly if inside a flex layout
   setTimeout(()=> { map.invalidateSize(); }, 250);
 </script>
 </body>
